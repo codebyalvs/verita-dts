@@ -29,7 +29,7 @@
     };
     # Enable previews and customize configuration
     previews = {
-      enable = true;
+      enable = false;
       previews = {
         web = {
           command = ["php" "artisan" "serve" "--port" "$PORT" "--host" "0.0.0.0"];
