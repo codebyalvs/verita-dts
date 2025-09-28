@@ -1,61 +1,55 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Project Blueprint
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 1. Overview
 
-## About Laravel
+This project is a full-stack web application built with the Laravel framework. It provides a starting point for a modern, performant, and secure web application, leveraging Laravel's powerful features for routing, data handling, and backend logic.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 2. Implemented Features & Design
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 2.1. Authentication
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+*   **Login and Registration:** A complete authentication system is in place, allowing users to create accounts and log in.
+*   **Password Reset with Verification Code:** The password reset functionality has been updated to use a verification code sent to the user's email, instead of a password reset link. This includes:
+    *   **Sending a 6-digit verification code** to the user's email address.
+    *   **A form to enter the verification code.**
+    *   **The ability to resend the verification code.**
+    *   **A new password form** that appears after successful verification.
+*   **Email Verification:** New users are required to verify their email address before they can access the application. The verification page now includes a "Resend Code" button.
+*   **Secure Authentication:** The application uses Laravel's built-in authentication services to ensure that user data is handled securely.
+*   **Robust Email Validation:** The registration process now includes a `try...catch` block to handle email sending failures. If an invalid email is provided, the user is gracefully redirected back to the registration page with an error message.
+*   **Google Account Validation:** The registration form now validates that the email address is a valid Google account, ensuring that users are registering with a `@gmail.com` or `@google.com` email address.
 
-## Learning Laravel
+### 2.2. Database
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+*   **User and Counter Models:** The database includes tables for `users` and `counters`, with corresponding Eloquent models for easy data management.
+*   **Database Seeding:** The database is seeded with initial data for both `users` and `counters`, making it easy to test and develop the application.
+*   **Famous Filipino Programmers:** The `users` table is populated with a list of 10 famous Filipino programmers, each with a default password of `password`.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### 2.3. Routing and Navigation
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+*   **Dashboard Route:** A new `/dashboard` route has been created to serve as the main page for authenticated users.
+*   **Redirects:** The application automatically redirects users to the `/dashboard` route after a successful login.
+*   **Guest and Auth Middleware:** The application uses Laravel's middleware to ensure that authenticated users are directed to the correct pages, while guests are restricted to the login and registration pages.
+*   **Profile Routes:** A complete set of routes for user profile management has been implemented, including routes for displaying, updating, and deleting a user's profile.
 
-## Laravel Sponsors
+### 2.4. Interactive Dashboard
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+*   **Real-time Counter:** The dashboard now includes a simple counter that can be incremented by the user in real-time, without a full page refresh. This is achieved using AJAX to send an asynchronous request to the server and update the counter on the page with the response.
 
-### Premium Partners
+### 2.5. User Profile Management
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+*   **Profile Information:** Users can update their personal information, including their name and email address.
+*   **Email Verification:** When a user updates their email address, they are required to re-verify it. A new verification link is sent to the new email address.
+*   **Password Updates:** Users can securely update their password from their profile page.
+*   **Account Deletion:** Users have the option to delete their account, which will remove all of their data from the application.
 
-## Contributing
+### 2.6. UI/UX
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+*   **Unified Layout:** The dashboard and profile pages now share the same component-based layout and Tailwind CSS structure, providing a consistent and modern user experience.
 
-## Code of Conduct
+## 3. Current Implementation Plan
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+*   **Objective:** To prevent the "Your email address is unverified" message from appearing on the profile page, since email verification is already handled during registration.
+*   **Steps Taken:**
+    1.  **Removed `MustVerifyEmail` Contract:** The `implements MustVerifyEmail` contract was removed from the `app/Models/User.php` file.
+    2.  **Updated Fillable Attributes:** The `$fillable` array in the `User` model was updated to include `middle_name` and `email_verified_at` and to remove `verification_code`.
